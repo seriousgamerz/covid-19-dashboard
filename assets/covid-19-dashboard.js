@@ -20301,7 +20301,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("covid-19-dashboard/app")["default"].create({"host":"https://covid19.knowledge.yahoo.com","namespace":"/api/json/v1","tileServer":"https://api.location.verizon.com/here/maptile/2.1/maptile/newest/reduced.day/{z}/{x}/{y}/512/png8?key=mrL7urlhJhv0wAFJUXjtxKp0YqLrK40B","tileServerAttribution":"vzmAttribution","name":"covid-19-dashboard","version":"0.0.0+49a4d6ef"});
+            require("covid-19-dashboard/app")["default"].create({"host":"https://covid19.knowledge.yahoo.com","namespace":"/api/json/v1","tileServer":"https://api.location.verizon.com/here/maptile/2.1/maptile/newest/reduced.day/{z}/{x}/{y}/512/png8?key=mrL7urlhJhv0wAFJUXjtxKp0YqLrK40B","tileServerAttribution":"vzmAttribution","name":"covid-19-dashboard","version":"0.0.0+c5eae66f"});
           }
         
 //# sourceMappingURL=covid-19-dashboard.map

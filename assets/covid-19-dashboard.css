@@ -148,6 +148,9 @@ nav.nav .menu .menu-content {
   padding: 0;
   text-align: right;
 }
+.case-details__global .case-details__table-change.d-tooltip::after {
+  transform: translateX(-85%);
+}
 .case-details__table-row {
   display: flex;
   padding: 5px 0;
@@ -168,7 +171,7 @@ nav.nav .menu .menu-content {
   color: var(--color-grey-600);
 }
 .case-details__table-change--active::after {
-  transform: translateX(-25%);
+  transform: translateX(-15%);
 }
 .case-details__table-col {
   padding: 0;
