@@ -264,6 +264,7 @@ nav.nav .menu .menu-content {
   }
 }
 .location-table__list-item {
+  cursor: pointer;
   display: flex;
 }
 .location-table__list-item.active, .location-table__list-item:hover {

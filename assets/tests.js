@@ -565,7 +565,7 @@ define("covid-19-dashboard/tests/acceptance/mobile-test", ["qunit", "@ember/test
               case 11:
                 assert.dom('.mobile-tabs__tab.is-active').hasText('Confirmed Cases by State', 'Case breakdown view is active after clicking the tab');
                 _context5.next = 14;
-                return (0, _testHelpers.click)(".location-table__list li:nth-of-type(1) a");
+                return (0, _testHelpers.click)(".location-table__list li:nth-of-type(1) div");
 
               case 14:
                 assert.equal((0, _testHelpers.currentURL)(), '/New_York_(state)', 'Clicking `New York (state)` loads the correct location');
@@ -942,8 +942,7 @@ define("covid-19-dashboard/tests/helpers/dashboard-asserts", ["exports", "@ember
       var title = _ref.title,
           value = _ref.value;
       var row = idx + 1;
-      assert.dom(".location-table__list li:nth-of-type(".concat(row, ") a")).hasText(title, "Breakdown table shows the correct title in row ".concat(row));
-      assert.dom(".location-table__list li:nth-of-type(".concat(row, ") a")).hasAttribute("href", "/".concat(title.replace(/\s/g, "_")), "Breakdown table shows the correct href in row ".concat(row));
+      assert.dom(".location-table__list li:nth-of-type(".concat(row, ") div")).hasText(title, "Breakdown table shows the correct title in row ".concat(row));
       assert.dom(".location-table__list li:nth-of-type(".concat(row, ") span")).hasText(value, "Breakdown table shows the correct value in row ".concat(row));
     });
   };

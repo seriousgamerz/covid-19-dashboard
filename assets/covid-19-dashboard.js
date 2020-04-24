@@ -1500,13 +1500,13 @@
           >
             {{#let (get location 'attributes.wikiId') as | locationId |}}
               <li class="location-table__list-item p-y-5 p-x-10 {{if (eq locationId this.selectedLocationId) "active"}}">
-                <LinkTo
+                <div
+                  role="button"
                   class="location-table__list-item__place"
-                  @route="dashboard.location"
-                  @model={{locationId}}
+                  {{on "click" (fn @onLocationSelect locationId)}}
                 >
                   {{location.attributes.label}}
-                </LinkTo>
+                </div>
                 <span class="location-table__list-item__total-confirmed-cases" aria-label={{t (concat "label.total." @fieldToShow)}}>
                   {{format-number (get location.attributes @fieldToShow)}}
                 </span>
@@ -1528,8 +1528,8 @@
   
   */
   {
-    id: "jnVYTnjw",
-    block: "{\"symbols\":[\"location\",\"locationId\",\"@fieldToShow\",\"@occlusion\",\"&attrs\",\"@publishedDate\",\"@location\"],\"statements\":[[9,\"div\",false],[23,\"class\",\"location-table\",null],[15,5],[3,0,0,[27,[26,8,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchData\"]],[27,[24,7],[]],[27,[24,6],[]]],null],[3,0,0,[27,[26,9,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchData\"]],[27,[24,7],[]],[27,[24,6],[]]],null],[10],[1,1,0,0,\"\\n  \"],[9,\"div\",true],[12,\"class\",\"flex align-items-center p-l-20 p-b-10\",null],[10],[1,1,0,0,\"\\n\"],[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"parentLocationId\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,\"link-to\",[[23,\"class\",\"p-r-10 flex align-items-center\",null]],[[\"@route\",\"@model\"],[\"dashboard.location\",[27,[24,0],[\"parentLocationId\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n        \"],[1,0,0,0,[31,522,7,[27,[26,0,\"CallHead\"],[]],[\"arrowhead-left-circle\"],[[\"class\",\"width\",\"height\"],[\"location-table__title__up\",\"18px\",\"18px\"]]]],[1,1,0,0,\"\\n      \"]],\"parameters\":[]}]]],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"    \"],[9,\"h4\",true],[12,\"class\",\"location-table__title flex-1\",null],[10],[1,0,0,0,[31,731,1,[27,[26,1,\"CallHead\"],[]],[[27,[24,0],[\"title\"]]],null]],[11],[1,1,0,0,\"\\n  \"],[11],[1,1,0,0,\"\\n\\n\"],[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"loading\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"div\",true],[12,\"class\",\"location-table__loader\",null],[10],[1,1,0,0,\"\\n      \"],[9,\"div\",true],[12,\"class\",\"loader is-medium\",null],[10],[11],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"locations\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"      \"],[9,\"ul\",true],[12,\"class\",\"location-table__list p-l-20 p-b-10\",null],[10],[1,1,0,0,\"\\n        \"],[7,\"list-iterator\",[],[[\"@occlusion\",\"@locations\",\"@idForFirstItem\"],[[27,[24,4],[]],[27,[24,0],[\"locations\"]],[27,[24,0],[\"selectedLocationId\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n\"],[5,[27,[26,7,\"BlockHead\"],[]],[[31,1175,3,[27,[26,5,\"CallHead\"],[]],[[27,[24,1],[]],\"attributes.wikiId\"],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"            \"],[9,\"li\",true],[13,\"class\",[32,[\"location-table__list-item p-y-5 p-x-10 \",[31,1293,2,[27,[26,3,\"CallHead\"],[]],[[31,1297,2,[27,[26,2,\"CallHead\"],[]],[[27,[24,2],[]],[27,[24,0],[\"selectedLocationId\"]]],null],\"active\"],null]]],null],[10],[1,1,0,0,\"\\n              \"],[7,\"link-to\",[[23,\"class\",\"location-table__list-item__place\",null]],[[\"@route\",\"@model\"],[\"dashboard.location\",[27,[24,2],[]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n                \"],[1,0,0,0,[27,[24,1],[\"attributes\",\"label\"]]],[1,1,0,0,\"\\n              \"]],\"parameters\":[]}]]],[1,1,0,0,\"\\n              \"],[9,\"span\",true],[12,\"class\",\"location-table__list-item__total-confirmed-cases\",null],[13,\"aria-label\",[31,1686,1,[27,[26,1,\"CallHead\"],[]],[[31,1689,6,[27,[26,4,\"CallHead\"],[]],[\"label.total.\",[27,[24,3],[]]],null]],null],null],[10],[1,1,0,0,\"\\n                \"],[1,0,0,0,[31,1746,13,[27,[26,6,\"CallHead\"],[]],[[31,1761,3,[27,[26,5,\"CallHead\"],[]],[[27,[24,1],[\"attributes\"]],[27,[24,3],[]]],null]],null]],[1,1,0,0,\"\\n              \"],[11],[1,1,0,0,\"\\n            \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[2]}]]],[1,1,0,0,\"        \"]],\"parameters\":[1]}]]],[1,1,0,0,\"\\n      \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"      \"],[9,\"div\",true],[12,\"class\",\"location-table__empty p-t-80\",null],[10],[1,1,0,0,\"\\n        \"],[9,\"div\",true],[12,\"class\",\"location-table__empty__icon-bg flex align-items-center justify-content-center p-y-5\",null],[10],[1,1,0,0,\"\\n          \"],[1,0,0,0,[31,2076,7,[27,[26,0,\"CallHead\"],[]],[\"microscope\"],[[\"class\",\"width\",\"height\"],[\"location-table__empty__icon\",\"64px\",\"64px\"]]]],[1,1,0,0,\"\\n        \"],[11],[1,1,0,0,\"\\n        \"],[9,\"h5\",true],[12,\"class\",\"location-table__empty__title is-grey-600 p-t-15\",null],[10],[1,0,0,0,[31,2248,1,[27,[26,1,\"CallHead\"],[]],[\"noData.title\"],null]],[11],[1,1,0,0,\"\\n        \"],[9,\"p\",true],[12,\"class\",\"location-table__empty__text is-grey-600 p-x-40\",null],[10],[1,0,0,0,[31,2340,1,[27,[26,1,\"CallHead\"],[]],[\"noData.description\"],null]],[11],[1,1,0,0,\"\\n      \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[11],[1,1,0,0,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"svg-jar\",\"t\",\"eq\",\"if\",\"concat\",\"get\",\"format-number\",\"let\",\"did-insert\",\"did-update\"]}",
+    id: "AXGbkTal",
+    block: "{\"symbols\":[\"location\",\"locationId\",\"@onLocationSelect\",\"@fieldToShow\",\"@occlusion\",\"&attrs\",\"@publishedDate\",\"@location\"],\"statements\":[[9,\"div\",false],[23,\"class\",\"location-table\",null],[15,6],[3,0,0,[27,[26,10,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchData\"]],[27,[24,8],[]],[27,[24,7],[]]],null],[3,0,0,[27,[26,11,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchData\"]],[27,[24,8],[]],[27,[24,7],[]]],null],[10],[1,1,0,0,\"\\n  \"],[9,\"div\",true],[12,\"class\",\"flex align-items-center p-l-20 p-b-10\",null],[10],[1,1,0,0,\"\\n\"],[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"parentLocationId\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,\"link-to\",[[23,\"class\",\"p-r-10 flex align-items-center\",null]],[[\"@route\",\"@model\"],[\"dashboard.location\",[27,[24,0],[\"parentLocationId\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n        \"],[1,0,0,0,[31,522,7,[27,[26,0,\"CallHead\"],[]],[\"arrowhead-left-circle\"],[[\"class\",\"width\",\"height\"],[\"location-table__title__up\",\"18px\",\"18px\"]]]],[1,1,0,0,\"\\n      \"]],\"parameters\":[]}]]],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"    \"],[9,\"h4\",true],[12,\"class\",\"location-table__title flex-1\",null],[10],[1,0,0,0,[31,731,1,[27,[26,1,\"CallHead\"],[]],[[27,[24,0],[\"title\"]]],null]],[11],[1,1,0,0,\"\\n  \"],[11],[1,1,0,0,\"\\n\\n\"],[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"loading\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"div\",true],[12,\"class\",\"location-table__loader\",null],[10],[1,1,0,0,\"\\n      \"],[9,\"div\",true],[12,\"class\",\"loader is-medium\",null],[10],[11],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[5,[27,[26,3,\"BlockHead\"],[]],[[27,[24,0],[\"locations\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"      \"],[9,\"ul\",true],[12,\"class\",\"location-table__list p-l-20 p-b-10\",null],[10],[1,1,0,0,\"\\n        \"],[7,\"list-iterator\",[],[[\"@occlusion\",\"@locations\",\"@idForFirstItem\"],[[27,[24,5],[]],[27,[24,0],[\"locations\"]],[27,[24,0],[\"selectedLocationId\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n\"],[5,[27,[26,9,\"BlockHead\"],[]],[[31,1175,3,[27,[26,7,\"CallHead\"],[]],[[27,[24,1],[]],\"attributes.wikiId\"],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"            \"],[9,\"li\",true],[13,\"class\",[32,[\"location-table__list-item p-y-5 p-x-10 \",[31,1293,2,[27,[26,3,\"CallHead\"],[]],[[31,1297,2,[27,[26,2,\"CallHead\"],[]],[[27,[24,2],[]],[27,[24,0],[\"selectedLocationId\"]]],null],\"active\"],null]]],null],[10],[1,1,0,0,\"\\n              \"],[9,\"div\",false],[23,\"role\",\"button\",null],[23,\"class\",\"location-table__list-item__place\",null],[3,0,0,[27,[26,5,\"ModifierHead\"],[]],[\"click\",[31,1485,2,[27,[26,4,\"CallHead\"],[]],[[27,[24,3],[]],[27,[24,2],[]]],null]],null],[10],[1,1,0,0,\"\\n                \"],[1,0,0,0,[27,[24,1],[\"attributes\",\"label\"]]],[1,1,0,0,\"\\n              \"],[11],[1,1,0,0,\"\\n              \"],[9,\"span\",true],[12,\"class\",\"location-table__list-item__total-confirmed-cases\",null],[13,\"aria-label\",[31,1693,1,[27,[26,1,\"CallHead\"],[]],[[31,1696,6,[27,[26,6,\"CallHead\"],[]],[\"label.total.\",[27,[24,4],[]]],null]],null],null],[10],[1,1,0,0,\"\\n                \"],[1,0,0,0,[31,1753,13,[27,[26,8,\"CallHead\"],[]],[[31,1768,3,[27,[26,7,\"CallHead\"],[]],[[27,[24,1],[\"attributes\"]],[27,[24,4],[]]],null]],null]],[1,1,0,0,\"\\n              \"],[11],[1,1,0,0,\"\\n            \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[2]}]]],[1,1,0,0,\"        \"]],\"parameters\":[1]}]]],[1,1,0,0,\"\\n      \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"      \"],[9,\"div\",true],[12,\"class\",\"location-table__empty p-t-80\",null],[10],[1,1,0,0,\"\\n        \"],[9,\"div\",true],[12,\"class\",\"location-table__empty__icon-bg flex align-items-center justify-content-center p-y-5\",null],[10],[1,1,0,0,\"\\n          \"],[1,0,0,0,[31,2083,7,[27,[26,0,\"CallHead\"],[]],[\"microscope\"],[[\"class\",\"width\",\"height\"],[\"location-table__empty__icon\",\"64px\",\"64px\"]]]],[1,1,0,0,\"\\n        \"],[11],[1,1,0,0,\"\\n        \"],[9,\"h5\",true],[12,\"class\",\"location-table__empty__title is-grey-600 p-t-15\",null],[10],[1,0,0,0,[31,2255,1,[27,[26,1,\"CallHead\"],[]],[\"noData.title\"],null]],[11],[1,1,0,0,\"\\n        \"],[9,\"p\",true],[12,\"class\",\"location-table__empty__text is-grey-600 p-x-40\",null],[10],[1,0,0,0,[31,2347,1,[27,[26,1,\"CallHead\"],[]],[\"noData.description\"],null]],[11],[1,1,0,0,\"\\n      \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[11],[1,1,0,0,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"svg-jar\",\"t\",\"eq\",\"if\",\"fn\",\"on\",\"concat\",\"get\",\"format-number\",\"let\",\"did-insert\",\"did-update\"]}",
     meta: {
       moduleName: "covid-19-dashboard/components/location-table.hbs"
     }
@@ -1760,7 +1760,7 @@
   });
   _exports.default = void 0;
 
-  var _dec, _dec2, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _temp;
+  var _dec, _dec2, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _temp;
 
   function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -1819,16 +1819,16 @@
         />
       {{/if}}
       {{#each this.countryRecords as |rec|}}
-        <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{this.onLocationClick}}  @zoom={{this.currentZoom}}/>
+        <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{@onLocationClick}}  @zoom={{this.currentZoom}}/>
       {{/each}}
       {{#each this.stateRecords as |rec|}}
         {{#if (or (not this.countyRecords.length) (neq rec.attributes.wikiId this.focusedState.attributes.wikiId))}}
-          <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{this.onLocationClick}}  @zoom={{this.currentZoom}}/>
+          <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{@onLocationClick}}  @zoom={{this.currentZoom}}/>
         {{/if}}
       {{/each}}
       {{#each this.countyRecords as |rec|}}
         {{#if (eq rec.relationships.state.data.id this.focusedState.id)}}
-          <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{this.onLocationClick}} @zoom={{this.currentZoom}} />
+          <LocationMarker @rec={{rec}} @layer={{layers}} @fieldToShow={{@fieldToShow}} @onLocationClick={{@onLocationClick}} @zoom={{this.currentZoom}} />
         {{/if}}
       {{/each}}
     </LeafletMap>
@@ -1838,8 +1838,8 @@
   
   */
   {
-    id: "hsjhHvC1",
-    block: "{\"symbols\":[\"layers\",\"rec\",\"rec\",\"rec\",\"&attrs\",\"@fieldToShow\",\"@publishedDate\",\"@location\"],\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"centerLocation\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"  \"],[7,\"leaflet-map\",[[23,\"class\",\"map\",null],[15,5],[3,0,0,[27,[26,7,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchGlobalRecords\"]],[27,[24,7],[]]],null],[3,0,0,[27,[26,8,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchGlobalRecords\"]],[27,[24,7],[]]],null],[3,0,0,[27,[26,7,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchCountyRecords\"]],[27,[24,8],[]],[27,[24,7],[]]],null],[3,0,0,[27,[26,8,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchCountyRecords\"]],[27,[24,8],[]],[27,[24,7],[]]],null]],[[\"@center\",\"@zoom\",\"@minZoom\",\"@maxZoom\",\"@onMoveend\",\"@onZoomend\"],[[27,[24,0],[\"centerLocation\"]],[27,[24,0],[\"zoom\"]],1,10,[27,[24,0],[\"setZoom\"]],[27,[24,0],[\"setCurrentZoom\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n    \"],[7,[27,[24,1],[\"tile\"]],[],[[\"@attribution\",\"@url\"],[[31,681,1,[27,[26,9,\"CallHead\"],[]],[[27,[24,0],[\"tileServerAttribution\"]]],null],[27,[24,0],[\"tileUrl\"]]]],null],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"showMarker\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,[27,[24,1],[\"marker\"]],[],[[\"@location\",\"@icon\"],[[27,[24,0],[\"centerLocation\"]],[31,844,4,[27,[26,6,\"CallHead\"],[]],null,[[\"className\",\"iconUrl\",\"iconSize\"],[\"map__marker-icon\",\"location.svg\",[31,911,5,[27,[26,5,\"CallHead\"],[]],[32,32],null]]]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"countryRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,4],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,0],[\"onLocationClick\"]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[4]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"stateRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[31,1213,2,[27,[26,4,\"CallHead\"],[]],[[31,1217,3,[27,[26,3,\"CallHead\"],[]],[[27,[24,0],[\"countyRecords\",\"length\"]]],null],[31,1249,3,[27,[26,2,\"CallHead\"],[]],[[27,[24,3],[\"attributes\",\"wikiId\"]],[27,[24,0],[\"focusedState\",\"attributes\",\"wikiId\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,3],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,0],[\"onLocationClick\"]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[3]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"countyRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[31,1555,2,[27,[26,0,\"CallHead\"],[]],[[27,[24,2],[\"relationships\",\"state\",\"data\",\"id\"]],[27,[24,0],[\"focusedState\",\"id\"]]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,2],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,0],[\"onLocationClick\"]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[2]}]]],[1,1,0,0,\"  \"]],\"parameters\":[1]}]]],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"  \"],[9,\"div\",false],[23,\"class\",\"map__placeholder\",null],[15,5],[10],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"eq\",\"if\",\"neq\",\"not\",\"or\",\"array\",\"icon\",\"did-insert\",\"did-update\",\"t\",\"-track-array\",\"each\"]}",
+    id: "OTYuLLNr",
+    block: "{\"symbols\":[\"layers\",\"rec\",\"rec\",\"rec\",\"&attrs\",\"@fieldToShow\",\"@onLocationClick\",\"@publishedDate\",\"@location\"],\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"centerLocation\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"  \"],[7,\"leaflet-map\",[[23,\"class\",\"map\",null],[15,5],[3,0,0,[27,[26,7,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchGlobalRecords\"]],[27,[24,8],[]]],null],[3,0,0,[27,[26,8,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchGlobalRecords\"]],[27,[24,8],[]]],null],[3,0,0,[27,[26,7,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchCountyRecords\"]],[27,[24,9],[]],[27,[24,8],[]]],null],[3,0,0,[27,[26,8,\"ModifierHead\"],[]],[[27,[24,0],[\"fetchCountyRecords\"]],[27,[24,9],[]],[27,[24,8],[]]],null]],[[\"@center\",\"@zoom\",\"@minZoom\",\"@maxZoom\",\"@onMoveend\",\"@onZoomend\"],[[27,[24,0],[\"centerLocation\"]],[27,[24,0],[\"zoom\"]],1,10,[27,[24,0],[\"setZoom\"]],[27,[24,0],[\"setCurrentZoom\"]]]],[[\"default\"],[{\"statements\":[[1,1,0,0,\"\\n    \"],[7,[27,[24,1],[\"tile\"]],[],[[\"@attribution\",\"@url\"],[[31,681,1,[27,[26,9,\"CallHead\"],[]],[[27,[24,0],[\"tileServerAttribution\"]]],null],[27,[24,0],[\"tileUrl\"]]]],null],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"showMarker\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,[27,[24,1],[\"marker\"]],[],[[\"@location\",\"@icon\"],[[27,[24,0],[\"centerLocation\"]],[31,844,4,[27,[26,6,\"CallHead\"],[]],null,[[\"className\",\"iconUrl\",\"iconSize\"],[\"map__marker-icon\",\"location.svg\",[31,911,5,[27,[26,5,\"CallHead\"],[]],[32,32],null]]]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"countryRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"      \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,4],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,7],[]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[4]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"stateRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[31,1209,2,[27,[26,4,\"CallHead\"],[]],[[31,1213,3,[27,[26,3,\"CallHead\"],[]],[[27,[24,0],[\"countyRecords\",\"length\"]]],null],[31,1245,3,[27,[26,2,\"CallHead\"],[]],[[27,[24,3],[\"attributes\",\"wikiId\"]],[27,[24,0],[\"focusedState\",\"attributes\",\"wikiId\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,3],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,7],[]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[3]}]]],[5,[27,[26,11,\"BlockHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[31,0,0,[27,[26,10,\"CallHead\"],[]],[[27,[24,0],[\"countyRecords\"]]],null]],null]],null,[[\"default\"],[{\"statements\":[[5,[27,[26,1,\"BlockHead\"],[]],[[31,1547,2,[27,[26,0,\"CallHead\"],[]],[[27,[24,2],[\"relationships\",\"state\",\"data\",\"id\"]],[27,[24,0],[\"focusedState\",\"id\"]]],null]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"location-marker\",[],[[\"@rec\",\"@layer\",\"@fieldToShow\",\"@onLocationClick\",\"@zoom\"],[[27,[24,2],[]],[27,[24,1],[]],[27,[24,6],[]],[27,[24,7],[]],[27,[24,0],[\"currentZoom\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[2]}]]],[1,1,0,0,\"  \"]],\"parameters\":[1]}]]],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"  \"],[9,\"div\",false],[23,\"class\",\"map__placeholder\",null],[15,5],[10],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"eq\",\"if\",\"neq\",\"not\",\"or\",\"array\",\"icon\",\"did-insert\",\"did-update\",\"t\",\"-track-array\",\"each\"]}",
     meta: {
       moduleName: "covid-19-dashboard/components/map.hbs"
     }
@@ -1991,27 +1991,25 @@
 
       _initializerDefineProperty(_assertThisInitialized(_this3), "elide", _descriptor, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "router", _descriptor2, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "screen", _descriptor2, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "screen", _descriptor3, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "countyRecords", _descriptor3, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "countyRecords", _descriptor4, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "countryRecords", _descriptor4, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "countryRecords", _descriptor5, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "stateRecords", _descriptor5, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "stateRecords", _descriptor6, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "zoom", _descriptor6, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "zoom", _descriptor7, _assertThisInitialized(_this3));
-
-      _initializerDefineProperty(_assertThisInitialized(_this3), "currentZoom", _descriptor8, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "currentZoom", _descriptor7, _assertThisInitialized(_this3));
 
       _defineProperty(_assertThisInitialized(_this3), "tileServerAttribution", tileServerAttribution);
 
       _defineProperty(_assertThisInitialized(_this3), "tileUrl", tileServer);
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "fetchCountyData", _descriptor9, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "fetchCountyData", _descriptor8, _assertThisInitialized(_this3));
 
-      _initializerDefineProperty(_assertThisInitialized(_this3), "fetchGlobalData", _descriptor10, _assertThisInitialized(_this3));
+      _initializerDefineProperty(_assertThisInitialized(_this3), "fetchGlobalData", _descriptor9, _assertThisInitialized(_this3));
 
       return _this3;
     }
@@ -2034,11 +2032,6 @@
         if (this.args.publishedDate) {
           this.fetchGlobalData.perform();
         }
-      }
-    }, {
-      key: "onLocationClick",
-      value: function onLocationClick(location) {
-        this.router.transitionTo('dashboard.location', location);
       }
     }, {
       key: "setCurrentZoom",
@@ -2106,62 +2099,57 @@
     enumerable: true,
     writable: true,
     initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "router", [Ember.inject.service], {
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "screen", [Ember.inject.service], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "screen", [Ember.inject.service], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "countyRecords", [Ember._tracked], {
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "countyRecords", [Ember._tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return [];
     }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "countryRecords", [Ember._tracked], {
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "countryRecords", [Ember._tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return [];
     }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "stateRecords", [Ember._tracked], {
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "stateRecords", [Ember._tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return [];
     }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "zoom", [Ember._tracked], {
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "zoom", [Ember._tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return ZOOM_LEVELS.global;
     }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, "currentZoom", [Ember._tracked], {
+  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "currentZoom", [Ember._tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return ZOOM_LEVELS.global;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "fetchCountyRecords", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "fetchCountyRecords"), _class.prototype), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, "fetchCountyData", [_dec], {
+  }), _applyDecoratedDescriptor(_class.prototype, "fetchCountyRecords", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "fetchCountyRecords"), _class.prototype), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, "fetchCountyData", [_dec], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "fetchGlobalRecords", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "fetchGlobalRecords"), _class.prototype), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, "fetchGlobalData", [_dec2], {
+  }), _applyDecoratedDescriptor(_class.prototype, "fetchGlobalRecords", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "fetchGlobalRecords"), _class.prototype), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, "fetchGlobalData", [_dec2], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "onLocationClick", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "onLocationClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setCurrentZoom", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "setCurrentZoom"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setZoom", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "setZoom"), _class.prototype)), _class));
+  }), _applyDecoratedDescriptor(_class.prototype, "setCurrentZoom", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "setCurrentZoom"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setZoom", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "setZoom"), _class.prototype)), _class));
   _exports.default = MapComponent;
 
   Ember._setComponentTemplate(__COLOCATED_TEMPLATE__, MapComponent);
@@ -3002,8 +2990,9 @@
     }
 
     _createClass(DashboardLocationController, [{
-      key: "resetMobileView",
-      value: function resetMobileView() {
+      key: "onLocationSelect",
+      value: function onLocationSelect(location) {
+        this.router.transitionTo('dashboard.location', location);
         this.mobileView = 'details';
       }
     }, {
@@ -3058,7 +3047,7 @@
     initializer: function initializer() {
       return 'details';
     }
-  }), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, "fetchLocationTask", [_dec], {
+  }), _applyDecoratedDescriptor(_class.prototype, "onLocationSelect", [Ember._action], Object.getOwnPropertyDescriptor(_class.prototype, "onLocationSelect"), _class.prototype), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, "fetchLocationTask", [_dec], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -19094,7 +19083,6 @@
 
         _get(_getPrototypeOf(DashboardLocationRoute.prototype), "setupController", this).apply(this, arguments);
 
-        controller.resetMobileView();
         controller.fetchLocation(model).then(function (location) {
           if (location) {
             _this2.updateTitle(location);
@@ -20018,8 +20006,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "jWR8Ovjg",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"nav\",[],[[\"@timeSinceRefresh\"],[[27,[24,0],[\"metadata\",\"timeSinceRefresh\"]]]],null],[1,1,0,0,\"\\n\"],[9,\"main\",true],[12,\"class\",\"dashboard\",null],[10],[1,1,0,0,\"\\n\"],[5,[27,[26,5,\"BlockHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"aside\",true],[12,\"class\",\"dashboard__left\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"case-details\",[[23,\"class\",\"dashboard__global-case-details p-20\",null]],[[\"@title\",\"@publishedDate\",\"@location\"],[[31,376,1,[27,[26,0,\"CallHead\"],[]],[\"globalConfirmedCases\"],null],[27,[24,0],[\"metadata\",\"publishedDate\"]],[31,478,4,[27,[26,4,\"CallHead\"],[]],null,[[\"attributes\"],[[31,495,4,[27,[26,4,\"CallHead\"],[]],null,[[\"wikiId\"],[\"Earth\"]]]]]]]],null],[1,1,0,0,\"\\n      \"],[7,\"location-table\",[[23,\"class\",\"p-t-20 dashboard__divider\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\",\"@occlusion\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]],true]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"  \"],[9,\"section\",true],[12,\"class\",\"dashboard__map-container\",null],[10],[1,1,0,0,\"\\n    \"],[7,\"map-header\",[[23,\"class\",\"dashboard__map-header\",null]],[[\"@location\"],[[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n    \"],[7,\"map\",[[23,\"class\",\"dashboard__map\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n  \"],[11],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"    \"],[7,\"mobile-tabs\",[],[[\"@view\",\"@location\",\"@onChange\"],[[27,[24,0],[\"mobileView\"]],[27,[24,0],[\"currentLocation\"]],[31,1248,2,[27,[26,3,\"CallHead\"],[]],[[31,1252,3,[27,[26,2,\"CallHead\"],[]],[[27,[24,0],[\"mobileView\"]]],null]],null]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[5,[27,[26,1,\"BlockHead\"],[]],[[31,1301,2,[27,[26,8,\"CallHead\"],[]],[[31,1305,3,[27,[26,7,\"CallHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null],[31,1332,2,[27,[26,6,\"CallHead\"],[]],[[27,[24,0],[\"mobileView\"]],\"details\"],null]],null]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"section\",true],[12,\"class\",\"dashboard__map-details p-20\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"location-info\",[],[[\"@location\"],[[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"showLocationCaseDetails\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"case-details\",[[23,\"class\",\"dashboard__location-case-details p-y-10\",null]],[[\"@title\",\"@publishedDate\",\"@location\"],[[31,1614,1,[27,[26,0,\"CallHead\"],[]],[\"confirmedCases\"],null],[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"      \"],[7,\"help-links\",[[23,\"class\",\"dashboard__divider p-t-10\",null]],[[],[]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"    \"],[9,\"section\",true],[12,\"class\",\"dashboard__mobile-breakdown\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"location-table\",[[23,\"class\",\"p-t-20\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\",\"@occlusion\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]],false]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[11],[1,1,0,0,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"t\",\"if\",\"mut\",\"fn\",\"hash\",\"unless\",\"eq\",\"not\",\"or\"]}",
+    "id": "uTMwOdZV",
+    "block": "{\"symbols\":[],\"statements\":[[7,\"nav\",[],[[\"@timeSinceRefresh\"],[[27,[24,0],[\"metadata\",\"timeSinceRefresh\"]]]],null],[1,1,0,0,\"\\n\"],[9,\"main\",true],[12,\"class\",\"dashboard\",null],[10],[1,1,0,0,\"\\n\"],[5,[27,[26,5,\"BlockHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"aside\",true],[12,\"class\",\"dashboard__left\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"case-details\",[[23,\"class\",\"dashboard__global-case-details p-20\",null]],[[\"@title\",\"@publishedDate\",\"@location\"],[[31,376,1,[27,[26,0,\"CallHead\"],[]],[\"globalConfirmedCases\"],null],[27,[24,0],[\"metadata\",\"publishedDate\"]],[31,478,4,[27,[26,4,\"CallHead\"],[]],null,[[\"attributes\"],[[31,495,4,[27,[26,4,\"CallHead\"],[]],null,[[\"wikiId\"],[\"Earth\"]]]]]]]],null],[1,1,0,0,\"\\n      \"],[7,\"location-table\",[[23,\"class\",\"p-t-20 dashboard__divider\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\",\"@occlusion\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]],true]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"  \"],[9,\"section\",true],[12,\"class\",\"dashboard__map-container\",null],[10],[1,1,0,0,\"\\n    \"],[7,\"map-header\",[[23,\"class\",\"dashboard__map-header\",null]],[[\"@location\"],[[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n    \"],[7,\"map\",[[23,\"class\",\"dashboard__map\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\",\"@onLocationClick\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]],[27,[24,0],[\"onLocationSelect\"]]]],null],[1,1,0,0,\"\\n  \"],[11],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"    \"],[7,\"mobile-tabs\",[],[[\"@view\",\"@location\",\"@onChange\"],[[27,[24,0],[\"mobileView\"]],[27,[24,0],[\"currentLocation\"]],[31,1297,2,[27,[26,3,\"CallHead\"],[]],[[31,1301,3,[27,[26,2,\"CallHead\"],[]],[[27,[24,0],[\"mobileView\"]]],null]],null]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[5,[27,[26,1,\"BlockHead\"],[]],[[31,1350,2,[27,[26,8,\"CallHead\"],[]],[[31,1354,3,[27,[26,7,\"CallHead\"],[]],[[27,[24,0],[\"screen\",\"isMobile\"]]],null],[31,1381,2,[27,[26,6,\"CallHead\"],[]],[[27,[24,0],[\"mobileView\"]],\"details\"],null]],null]],null,[[\"default\",\"else\"],[{\"statements\":[[1,1,0,0,\"    \"],[9,\"section\",true],[12,\"class\",\"dashboard__map-details p-20\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"location-info\",[],[[\"@location\"],[[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n\"],[5,[27,[26,1,\"BlockHead\"],[]],[[27,[24,0],[\"showLocationCaseDetails\"]]],null,[[\"default\"],[{\"statements\":[[1,1,0,0,\"        \"],[7,\"case-details\",[[23,\"class\",\"dashboard__location-case-details p-y-10\",null]],[[\"@title\",\"@publishedDate\",\"@location\"],[[31,1663,1,[27,[26,0,\"CallHead\"],[]],[\"confirmedCases\"],null],[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]]]],null],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[1,1,0,0,\"      \"],[7,\"help-links\",[[23,\"class\",\"dashboard__divider p-t-10\",null]],[[],[]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[1,1,0,0,\"    \"],[9,\"section\",true],[12,\"class\",\"dashboard__mobile-breakdown\",null],[10],[1,1,0,0,\"\\n      \"],[7,\"location-table\",[[23,\"class\",\"p-t-20\",null]],[[\"@fieldToShow\",\"@publishedDate\",\"@location\",\"@occlusion\",\"@onLocationSelect\"],[\"totalConfirmedCases\",[27,[24,0],[\"metadata\",\"publishedDate\"]],[27,[24,0],[\"currentLocation\"]],false,[27,[24,0],[\"onLocationSelect\"]]]],null],[1,1,0,0,\"\\n    \"],[11],[1,1,0,0,\"\\n\"]],\"parameters\":[]}]]],[11],[1,1,0,0,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"t\",\"if\",\"mut\",\"fn\",\"hash\",\"unless\",\"eq\",\"not\",\"or\"]}",
     "meta": {
       "moduleName": "covid-19-dashboard/templates/dashboard/location.hbs"
     }
@@ -20301,7 +20289,7 @@ catch(err) {
 
 ;
           if (!runningTests) {
-            require("covid-19-dashboard/app")["default"].create({"host":"https://covid19.knowledge.yahoo.com","namespace":"/api/json/v1","tileServer":"https://api.location.verizon.com/here/maptile/2.1/maptile/newest/reduced.day/{z}/{x}/{y}/512/png8?key=mrL7urlhJhv0wAFJUXjtxKp0YqLrK40B","tileServerAttribution":"vzmAttribution","name":"covid-19-dashboard","version":"0.0.0+c5eae66f"});
+            require("covid-19-dashboard/app")["default"].create({"host":"https://covid19.knowledge.yahoo.com","namespace":"/api/json/v1","tileServer":"https://api.location.verizon.com/here/maptile/2.1/maptile/newest/reduced.day/{z}/{x}/{y}/512/png8?key=mrL7urlhJhv0wAFJUXjtxKp0YqLrK40B","tileServerAttribution":"vzmAttribution","name":"covid-19-dashboard","version":"0.0.0+e0decaed"});
           }
         
 //# sourceMappingURL=covid-19-dashboard.map
