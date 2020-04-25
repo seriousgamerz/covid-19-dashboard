@@ -591,6 +591,207 @@ define("covid-19-dashboard/tests/acceptance/mobile-test", ["qunit", "@ember/test
     }());
   });
 });
+define("covid-19-dashboard/tests/acceptance/table-navigation-test", ["qunit", "@ember/test-helpers", "ember-qunit", "ember-cli-mirage/test-support/setup-mirage", "covid-19-dashboard/tests/helpers/dashboard-asserts"], function (_qunit, _testHelpers, _emberQunit, _setupMirage, _dashboardAsserts) {
+  "use strict";
+
+  function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Acceptance | table navigation', function (hooks) {
+    (0, _emberQunit.setupApplicationTest)(hooks);
+    (0, _setupMirage.default)(hooks);
+    (0, _qunit.test)('navigating to a location via the table - desktop', /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.visit)('/California');
+
+              case 2:
+                _context.next = 4;
+                return (0, _testHelpers.settled)();
+
+              case 4:
+                assert.equal((0, _testHelpers.currentURL)(), '/California', 'Start off at a location');
+                (0, _dashboardAsserts.assertTitle)(assert, 'California');
+                _context.next = 8;
+                return (0, _testHelpers.click)(".location-table__list li:nth-of-type(1) div");
+
+              case 8:
+                _context.next = 10;
+                return (0, _testHelpers.settled)();
+
+              case 10:
+                assert.equal((0, _testHelpers.currentURL)(), '/New_York_(state)', 'Clicking on a table location transitions to that location');
+                (0, _dashboardAsserts.assertTitle)(assert, 'New York (state)');
+                (0, _dashboardAsserts.assertBreadCrumb)(assert, [{
+                  title: 'Global',
+                  href: '/'
+                }, {
+                  title: 'United States',
+                  href: '/United_States'
+                }, {
+                  title: 'New York (state)',
+                  href: '/New_York_(state)'
+                }]);
+                (0, _dashboardAsserts.assertLocationDetails)(assert, {
+                  title: 'New York (state) Details',
+                  population: '19,157,532',
+                  wikiId: 'New_York_(state)'
+                });
+                _context.next = 16;
+                return (0, _testHelpers.settled)();
+
+              case 16:
+                (0, _dashboardAsserts.assertLocationCaseDetails)(assert, {
+                  casesTotal: '102,863',
+                  casesChange: '-- | --',
+                  activeTotal: '0',
+                  activeChange: '--',
+                  fatalTotal: '2,935',
+                  fatalChange: '0',
+                  recoveredTotal: '0',
+                  recoveredChange: '0'
+                });
+
+              case 17:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('navigating to a location via the table - mobile', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        var _temp;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.owner.register('service:screen', (_temp = /*#__PURE__*/function (_EmberService) {
+                  _inherits(_temp, _EmberService);
+
+                  var _super = _createSuper(_temp);
+
+                  function _temp() {
+                    var _this;
+
+                    _classCallCheck(this, _temp);
+
+                    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+                      args[_key] = arguments[_key];
+                    }
+
+                    _this = _super.call.apply(_super, [this].concat(args));
+
+                    _defineProperty(_assertThisInitialized(_this), "isMobile", true);
+
+                    return _this;
+                  }
+
+                  return _temp;
+                }(Ember.Service), _temp));
+                _context2.next = 3;
+                return (0, _testHelpers.visit)('/California');
+
+              case 3:
+                _context2.next = 5;
+                return (0, _testHelpers.settled)();
+
+              case 5:
+                assert.equal((0, _testHelpers.currentURL)(), '/California', 'Start off at a location');
+                (0, _dashboardAsserts.assertTitle)(assert, 'California');
+                _context2.next = 9;
+                return (0, _testHelpers.click)('.mobile-tabs__tab:not(.is-active)');
+
+              case 9:
+                _context2.next = 11;
+                return (0, _testHelpers.settled)();
+
+              case 11:
+                _context2.next = 13;
+                return (0, _testHelpers.click)(".location-table__list li:nth-of-type(1) div");
+
+              case 13:
+                _context2.next = 15;
+                return (0, _testHelpers.settled)();
+
+              case 15:
+                assert.equal((0, _testHelpers.currentURL)(), '/New_York_(state)', 'Clicking on a table location transitions to that location');
+                (0, _dashboardAsserts.assertTitle)(assert, 'New York (state)');
+                (0, _dashboardAsserts.assertBreadCrumb)(assert, [{
+                  title: 'Global',
+                  href: '/'
+                }, {
+                  title: 'United States',
+                  href: '/United_States'
+                }, {
+                  title: 'New York (state)',
+                  href: '/New_York_(state)'
+                }]);
+                (0, _dashboardAsserts.assertLocationDetails)(assert, {
+                  title: 'New York (state) Details',
+                  population: '19,157,532',
+                  wikiId: 'New_York_(state)'
+                });
+                _context2.next = 21;
+                return (0, _testHelpers.settled)();
+
+              case 21:
+                (0, _dashboardAsserts.assertLocationCaseDetails)(assert, {
+                  casesTotal: '102,863',
+                  casesChange: '-- | --',
+                  activeTotal: '0',
+                  activeChange: '--',
+                  fatalTotal: '2,935',
+                  fatalChange: '0',
+                  recoveredTotal: '0',
+                  recoveredChange: '0'
+                });
+
+              case 22:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("covid-19-dashboard/tests/acceptance/visit-location-test", ["qunit", "@ember/test-helpers", "ember-qunit", "ember-cli-mirage/test-support/setup-mirage", "covid-19-dashboard/tests/helpers/dashboard-asserts"], function (_qunit, _testHelpers, _emberQunit, _setupMirage, _dashboardAsserts) {
   "use strict";
 
